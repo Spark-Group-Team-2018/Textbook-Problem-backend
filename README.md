@@ -3,6 +3,30 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+install...
+
+install ruby gems first
+
+` bundle install --without production`
+
+
+...
+
+Database...
+
+``` 
+rails db:create
+rails db:migrate
+rails db:seed 
+```
+
+Server ...
+
+` rails server `
+
+
+
+
 Things you may want to cover:
 
 * Ruby version
