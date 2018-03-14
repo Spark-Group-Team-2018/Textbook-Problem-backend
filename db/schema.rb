@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 20180311181016) do
 
   create_table "books", force: :cascade do |t|
-    t.integer "ISBN", limit: 13
+    t.string "ISBN"
     t.string "title"
     t.string "description"
     t.integer "manufacturer_id"
