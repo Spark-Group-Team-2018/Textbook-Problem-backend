@@ -23,7 +23,7 @@ class ManufacturersController < ApplicationController
 
   def destroy
     if @manufacturer.destroy
-      render json: {"status": "Destroyed Manufacturer"}
+      render json: {"status": "Destroyed Manufacturer"}, status: :deleted
     else
       render json: error_message
     end
