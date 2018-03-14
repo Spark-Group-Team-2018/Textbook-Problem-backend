@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :books
   resources :offers, controller: 'offer'
 
+  resources :users
+
   resources :manufacturers
 
 end
