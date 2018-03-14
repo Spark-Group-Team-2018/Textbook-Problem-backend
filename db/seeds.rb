@@ -30,6 +30,7 @@ books = Book.create([
 ])
 
 user = User.create(:first_name => "Michael", :last_name => "Navazhylau", :email => "mikipux7@gmail.com")
+user_2 = User.create(:first_name => "Haran", :last_name => "Kumar", :email => "danke@mail.com")
 
 textbooks = Textbook.create([
   {
