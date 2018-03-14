@@ -43,7 +43,7 @@ textbooks = Textbook.create([
 
   {
       book_id: 2,
-      user_id: user.id,
+      user_id: user_2.id,
       status: "It aight",
       owner_description: "I like it",
       is_public: true
@@ -64,4 +64,15 @@ offers = Offer.create([
     textbook_id: 2
   }
 
+])
+
+pendingoffers = PendingOffer.create([
+  {
+    offer_id: 1,
+    buyer_id: user_2.id
+  },
+  {
+    offer_id: 2,
+    buyer_id: user.id
+  }
 ])
