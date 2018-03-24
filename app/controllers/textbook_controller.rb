@@ -11,7 +11,7 @@ class TextbookController < ApplicationController
 
     puts @real_textbooks
 
-    render :json => @textbooks
+    render :json => @textbooks, status: :ok
   end
 
   def show
@@ -19,7 +19,7 @@ class TextbookController < ApplicationController
 
     if @textbook then
       @textbook["textbook_title"] = Book.find(@textbook["book_id"]).title
-      render :json => @textbook
+      render :json => @textbook, status: :ok
     else
       render :json => {status: 404}
     end
@@ -41,7 +41,7 @@ class TextbookController < ApplicationController
   def update
 
     if @textbook.update_attributes(textbook_params)
-      render json: @textbook, status: :updated
+      render json: @textbook, status: :ok
     else
       render json: error_message
     end
@@ -51,7 +51,7 @@ class TextbookController < ApplicationController
   def destroy
 
     if @textbook.destroy
-      render json: {"status": "Destroyed Textbook"}, status: :deleted
+      render json: {"status": "Destroyed Textbook"}, status: :ok
     else
       render json: error_message
     end
