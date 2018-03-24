@@ -25,7 +25,7 @@ class BooksController < ApplicationController
   def destroy
 
     if @book.destroy
-      render json: {"status": "Destroyed book"}, status: :deleted
+      render json: {"status": "Destroyed book"}, status: :ok
     else
       render json: error_message
     end
@@ -35,7 +35,7 @@ class BooksController < ApplicationController
   def update
 
     if @book.update_attributes(book_params)
-      render json: @book, status: :updated
+      render json: @book, status: :ok
     else
       render json: error_message
     end

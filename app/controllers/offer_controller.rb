@@ -25,7 +25,7 @@ class OfferController < ApplicationController
   def update
 
     if @offer.update_attributes(offer_params)
-      render json: @offer, status: :updated
+      render json: @offer, status: :ok
     else
       render json: error_message
     end
@@ -34,7 +34,7 @@ class OfferController < ApplicationController
 
   def destroy
     if @offer.destroy
-      render json: {"status": "Destroyed Offer"}, status: :deleted
+      render json: {"status": "Destroyed Offer"}, status: :ok
     else
       render json: error_message
     end

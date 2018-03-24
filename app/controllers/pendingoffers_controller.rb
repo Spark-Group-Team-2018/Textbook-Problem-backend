@@ -16,7 +16,7 @@ class PendingoffersController < ApplicationController
     @new_pending_offer = PendingOffer.new(pendingoffer_params)
 
     if @new_pending_offer.save
-      render json: @new_pending_offer, stauts: :created
+      render json: @new_pending_offer, status: :created
     else
       render json: error_message
     end
@@ -26,7 +26,7 @@ class PendingoffersController < ApplicationController
   def update
 
     if @pendingoffer.update_attributes(pendingoffer_params)
-      render json: @pendingoffer, status: :updated
+      render json: @pendingoffer, status: :ok
     else
       render json: error_message
     end
@@ -37,7 +37,7 @@ class PendingoffersController < ApplicationController
   def destroy
 
     if @pendingoffer.destroy
-      render json: {"stuat": "Destroyed pending offer"}, status: :deleted
+      render json: {"status": "Destroyed pending offer"}, status: :ok
     else
       render json: error_message
     end
