@@ -18,8 +18,8 @@ class TextbookController < ApplicationController
     @special_textbook = @textbook.as_json rescue nil
 
     if @textbook then
-      @textbook["textbook_title"] = Book.find(@textbook["book_id"]).title
-      render :json => @textbook, status: :ok
+      @special_textbook["textbook_title"] = Book.find(@textbook["book_id"]).title
+      render :json => @special_textbook, status: :ok
     else
       render :json => {status: 404}
     end
