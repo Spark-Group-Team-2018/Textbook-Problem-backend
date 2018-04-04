@@ -4,5 +4,6 @@ class User < ApplicationRecord
   has_many :wishlists, dependent: :destroy
   has_many :textbooks, dependent: :destroy
 
+  has_secure_password
 
 end
