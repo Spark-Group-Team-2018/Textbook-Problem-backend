@@ -1,5 +1,6 @@
 class PendingoffersController < ApplicationController
 
+  skip_before_action :authenticate_request, only: [:index, :show]
   before_action :set_pendingoffer, only: [:show, :update, :destroy]
 
   def index

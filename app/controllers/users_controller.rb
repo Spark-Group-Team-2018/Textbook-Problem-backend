@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  skip_before_action :authenticate_request, only: [:index, :show]
   before_action :set_user, only: [:show, :update, :destroy]
 
   def index
@@ -11,6 +12,7 @@ class UsersController < ApplicationController
     render json: @user
   end
 
+  ## TODO Add ability to register new user
   def create
 
   end

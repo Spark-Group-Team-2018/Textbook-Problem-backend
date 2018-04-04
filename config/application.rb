@@ -14,6 +14,11 @@ module TextbookProblemBackend
 
     config.debug_exception_response_format = :api
 
+    # Load helper lib for auth
+    config.autoload_paths << Rails.root.join('lib')
+    config.autoload_paths << Rails.root.join('commands')
+
+
     # CORS
     config.middleware.insert_before 0, Rack::Cors do
       allow do

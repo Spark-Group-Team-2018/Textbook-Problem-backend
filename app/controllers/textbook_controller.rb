@@ -1,5 +1,6 @@
 class TextbookController < ApplicationController
 
+  skip_before_action :authenticate_request, only: [:index, :show]
   before_action :set_textbook, only: [:show, :update, :destroy]
 
   def index

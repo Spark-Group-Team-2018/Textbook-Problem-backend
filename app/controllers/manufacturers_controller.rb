@@ -1,5 +1,6 @@
 class ManufacturersController < ApplicationController
 
+  skip_before_action :authenticate_request, only: [:index, :show]
   before_action :set_manufacturer, only: [:show, :update, :destroy]
 
   def index

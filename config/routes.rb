@@ -11,4 +11,7 @@ Rails.application.routes.draw do
 
   resources :pendingoffers
 
+  # Authenticate route
+  post 'authenticate', to: 'authentication#authenticate'
+
 end
