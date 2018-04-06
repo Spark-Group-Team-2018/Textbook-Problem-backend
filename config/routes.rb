@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # Authenticate route
   post 'authenticate', to: 'authentication#authenticate'
 
+  get 'authenticated-user', to: 'users#getuser'
+
 end
