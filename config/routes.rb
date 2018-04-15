@@ -16,4 +16,6 @@ Rails.application.routes.draw do
 
   get 'authenticated-user', to: 'users#getuser'
 
+  put 'update-authenticated-user', to: 'users#updateuser'
+
 end

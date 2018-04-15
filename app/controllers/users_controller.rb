@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     render json: @current_user
   end
 
+  def updateuser
+
+    if @current_user.update_attributes(user_params)
+      render json: @current_user, status: :ok
+    else
+      render json: error_message
+    end
+
+  end
+
   ## TODO Add ability to register new user
   def create
 
