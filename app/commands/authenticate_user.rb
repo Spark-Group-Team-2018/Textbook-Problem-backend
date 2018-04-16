@@ -1,5 +1,7 @@
 # app/commands/authenticate_user.rb
 
+
+
 class AuthenticateUser
   prepend SimpleCommand
 
