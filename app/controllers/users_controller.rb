@@ -18,6 +18,16 @@ class UsersController < ApplicationController
     render json: @current_user
   end
 
+  def updateuser
+
+    if @current_user.update_attributes(user_params)
+      render json: @current_user, status: :ok
+    else
+      render json: error_message
+    end
+
+  end
+
   ## TODO Add ability to register new user
   def create
 
@@ -50,7 +60,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :phone_number)
     end
 
 end
