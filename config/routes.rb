@@ -7,7 +7,12 @@ Rails.application.routes.draw do
 
   resources :users
 
+
+  get 'manufacturers/get-existing-manufacturer', to: 'manufacturers#get_existing_manufacturer_by_name'
+
   resources :manufacturers
+
+
 
   resources :pendingoffers
 
