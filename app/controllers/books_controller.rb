@@ -15,10 +15,16 @@ class BooksController < ApplicationController
   def create
     @new_book = Book.new(book_params)
 
-    if @new_book.save
-      render json: @new_book, status: :created
-    else
+    @existing_book = Book.find_by(ISBN: @new_book.ISBN)
+
+    if @existing_book then
       render json: error_message
+    else
+      if @new_book.save
+        render json: @new_book, status: :created
+      else
+        render json: error_message
+      end
     end
 
   end
