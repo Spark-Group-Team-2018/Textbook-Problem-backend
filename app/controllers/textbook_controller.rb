@@ -1,8 +1,14 @@
+# Controller tasked with handling textbook api requests
+
 class TextbookController < ApplicationController
 
+  # Apply authentication to all api requests excluding show-db textbook actions
   skip_before_action :authenticate_request, only: [:index, :show]
+
+  # Retrieve specific textbook as per textbook_id for viewing, updating, and destroying said textbook
   before_action :set_textbook, only: [:show, :update, :destroy]
 
+  # Show all textbooks
   def index
     @textbooks = Textbook.all().as_json
 
@@ -15,6 +21,7 @@ class TextbookController < ApplicationController
     render :json => @textbooks, status: :ok
   end
 
+  # View a specific textbook via textbook_id
   def show
     @special_textbook = @textbook.as_json rescue nil
 
@@ -27,6 +34,7 @@ class TextbookController < ApplicationController
 
   end
 
+  # Create a new textbook as specified by textbook_params
   def create
     @new_textbook = Textbook.new(textbook_params)
 
@@ -39,6 +47,7 @@ class TextbookController < ApplicationController
 
   end
 
+  # Update a specific textbook
   def update
 
     if @textbook.update_attributes(textbook_params)
@@ -49,6 +58,7 @@ class TextbookController < ApplicationController
 
   end
 
+  # Destroy a specific textbook
   def destroy
 
     if @textbook.destroy
@@ -62,14 +72,17 @@ class TextbookController < ApplicationController
 
   private
 
+    # Retrieve the specific textbook for viewing, deletion, updating as specified by textbook_id
     def set_textbook
       @textbook = Textbook.find(params[:id])
     end
 
+    # Retrieve textbook fields that will be used for creation and updating as sent by client
     def textbook_params
       params.require(:textbook).permit(:book_id, :user_id, :status, :owner_description, :is_public)
     end
 
+    # Default error message
     def error_message
       {"status": "unable to do specified action"}
     end

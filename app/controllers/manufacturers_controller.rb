@@ -1,17 +1,25 @@
+# Controller in charge of handling manufacturer api requests
+
 class ManufacturersController < ApplicationController
 
+  # apply auth to all excluding read db api requests
   skip_before_action :authenticate_request, only: [:index, :show, :get_existing_manufacturer_by_name]
+
+  # set manufacturer variable for actions relating to a specific manufacturer
   before_action :set_manufacturer, only: [:show, :update, :destroy]
 
+  # retrieve all manufacturers
   def index
     @manufacturers = Manufacturer.all()
     render :json => @manufacturers
   end
 
+  # show a specific manufacturer
   def show
     render :json => @manufacturer
   end
 
+  # Creates a specific manufacturer
   def create
     @new_manufacturer = Manufacturer.new(manufacturer_params)
 
@@ -22,8 +30,9 @@ class ManufacturersController < ApplicationController
     end
   end
 
+  # Gets an existing manufacturer by its name
+  # if it does not already exist. then return nil (null)
 
-  # TODO check if manufacturer exists
   def get_existing_manufacturer_by_name
     @manufacturer_name  = params[:name]
 
@@ -39,6 +48,7 @@ class ManufacturersController < ApplicationController
 
   end
 
+  # Destroys a specific manufacturer
   def destroy
     if @manufacturer.destroy
       render json: {"status": "Destroyed Manufacturer"}, status: :ok
@@ -47,6 +57,7 @@ class ManufacturersController < ApplicationController
     end
   end
 
+  # Update a specific manufacturer
   def update
     if @manufacturer.update_attributes manufacturer_params
       render json: @manufacturer, status: :ok
@@ -57,10 +68,12 @@ class ManufacturersController < ApplicationController
 
   private
 
+    # default error message
     def error_message
       {"status": "unable to do specified action"}
     end
 
+    # set specific manufacturer for updating, viewing, and deletion requests
     def set_manufacturer
       @manufacturer = Manufacturer.find(params[:id]) rescue nil
       if @manufacturer == nil
@@ -69,6 +82,7 @@ class ManufacturersController < ApplicationController
 
     end
 
+    # get manufacturer fields for creation and updating of manufacturers
     def manufacturer_params
       params.require(:manufacturer).permit(:name, :description)
     end
