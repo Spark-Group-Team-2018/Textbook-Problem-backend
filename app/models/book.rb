@@ -1,3 +1,4 @@
+# Model relationships for Book model
 class Book < ApplicationRecord
   belongs_to :manufacturer
 

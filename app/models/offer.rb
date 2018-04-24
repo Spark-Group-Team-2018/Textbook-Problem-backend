@@ -1,3 +1,5 @@
+# Model relationships for Offer model
+
 class Offer < ApplicationRecord
   belongs_to :textbook
 

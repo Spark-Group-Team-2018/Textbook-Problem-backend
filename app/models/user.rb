@@ -1,3 +1,4 @@
+# Model relationships for User model
 class User < ApplicationRecord
 
   has_many :pending_offers, dependent: :destroy
